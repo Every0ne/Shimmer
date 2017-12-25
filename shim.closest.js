@@ -1,0 +1,1 @@
+;(function(b){b.matches=b.matches||b.mozMatchesSelector||b.msMatchesSelector||b.oMatchesSelector||b.webkitMatchesSelector;b.closest=b.closest||function a(c){var d=this;while(d){if(d.matches(c)){break}d=d.parentElement}return d}}(Element.prototype));
