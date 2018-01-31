@@ -32,12 +32,12 @@
 		},
 		{
 			//testName: 'Object.assign',
-			test:     typeof Object.assign == 'function',
+			test:     typeof Object.assign === 'function',
 			patchSrc: 'shim.Object.assign.js',
 		},
 		{
 			//testName: 'remove',
-			test:     typeof Element.prototype.remove == 'function',
+			test:     typeof Element.prototype.remove === 'function',
 			patchSrc: 'shim.remove.js',
 		},
 		{
@@ -46,7 +46,7 @@
 			patchSrc: 'shim.dataset.js',
 		},
 		{
-			test:     NodeList.prototype.forEach,
+			test:     NodeList.prototype.forEach === 'function',
 			patchSrc: 'shim.forEach.js',
 		}
 	];
@@ -55,7 +55,7 @@
 	{
 		if( tests[i].test === false )
 			var srcPath = '/js/shims'; // NEED MANUAL ADJUSTMENT!
-			loadScript( GSThemeURL + '/js/shims/' + tests[i].patchSrc );
+			loadScript( srcPath + '/' + tests[i].patchSrc );
 	}
 
 
