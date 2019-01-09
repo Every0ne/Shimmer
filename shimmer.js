@@ -32,12 +32,12 @@
 		},
 		{
 			//testName: 'Object.assign',
-			test:     typeof Object.assign === 'function',
+			test:     typeof Object.assign == 'function',
 			patchSrc: 'shim.Object.assign.js',
 		},
 		{
 			//testName: 'remove',
-			test:     typeof Element.prototype.remove === 'function',
+			test:     typeof Element.prototype.remove == 'function',
 			patchSrc: 'shim.remove.js',
 		},
 		{
@@ -46,18 +46,29 @@
 			patchSrc: 'shim.dataset.js',
 		},
 		{
-			test:     NodeList.prototype.forEach === 'function',
+			//testName: 'forEach on NodeList',
+			test:     NodeList.prototype.forEach,
 			patchSrc: 'shim.forEach.js',
+		},
+		{
+			//testName: IntersectionObserver,
+			test:     typeof IntersectionObserver == 'function',
+			patchSrc: 'shim.IntersectionObserver.js',
+		},
+		{
+			//testName: MutationObserver,
+			test:     typeof MutationObserver == 'function',
+			patchSrc: 'shim.MutationObserver.js',
 		}
 	];
 
 	for(var i = tests.length; i--;)
 	{
-		if( tests[i].test === false )
-			var srcPath = '/js/shims'; // NEED MANUAL ADJUSTMENT!
-			loadScript( srcPath + '/' + tests[i].patchSrc );
-	}
+		var srcPath = getCurrentScriptPath();
 
+		if( tests[i].test === false )
+			loadScript( srcPath + tests[i].patchSrc );
+	}
 
 	function loadScript(url)
 	{
@@ -86,4 +97,16 @@
 		script.src = url;
 		document.head.appendChild(script);
 	}
+
+	function getCurrentScriptPath()
+	{
+		if( document.currentScript )
+			var path = document.currentScript.src;
+		else
+		{
+			var path = document.getElementsByTagName('script');
+			path = path[path.length-1].src;
+		}
+		return path.substring( 0, path.lastIndexOf('/') ) + '/';
+	};
 })();
