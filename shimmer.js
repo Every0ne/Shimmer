@@ -47,7 +47,7 @@
 		},
 		{
 			//testName: 'forEach on NodeList',
-			test:     NodeList.prototype.forEach,
+			test:     typeof NodeList.prototype.forEach == 'function',
 			patchSrc: 'shim.forEach.js',
 		},
 		{
@@ -59,6 +59,11 @@
 			//testName: MutationObserver,
 			test:     typeof MutationObserver == 'function',
 			patchSrc: 'shim.MutationObserver.js',
+		},
+		{
+			//testName: URLSearchParams,
+			test:     typeof URLSearchParams == 'function',
+			patchSrc: 'shim.URLSearchParams.js',
 		}
 	];
 
