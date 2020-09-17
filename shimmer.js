@@ -1,3 +1,7 @@
+/*	Shimmer - Modernizer alternative that doesn't give a fυсk.
+	Smashed together by Every0ne from code lying around.
+	https://github.com/Every0ne/Shimmer */
+
 (function (){
 	var tests = [
 		{
